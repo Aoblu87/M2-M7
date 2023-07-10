@@ -1,3 +1,31 @@
+//AGGIUNGERE WINDOW.LOAD
+
+// const inputJob= document.querySelector('#job')
+
+// const inputLocation=document.querySelector('#location')
+
+let lowerCase=[]
+    lowerCase.push(jobs.toLowerCase())
+
+    console.log(lowerCase)
+
+// function search(job,location){
+
+//     //rendere l'array tutto minuscolo
+//     let lowerCase=[]
+//     lowerCase.push(jobs.toLowerCase())
+
+//     for (const search of inputLocation) {
+//         inputLocation.toLowerCase()
+//     }
+
+// }
+
+
+
+
+
+
 /*
 PARTE 1: 
 Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
