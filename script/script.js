@@ -1,21 +1,13 @@
 //AGGIUNGERE WINDOW.LOAD
-
-// const inputJob= document.querySelector('#job')
-
-// const inputLocation=document.querySelector('#location')
-
-
-
-
-
-//deFINISCO COSTANTE PER NODO RICERCA lavORO
-//const inputJob= document.querySelector('[name=job]')
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+const jobQuery= document.querySelector('[name=job]')
 
 
 //DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
 // let jobValue =inputJob.value
 
-// const InputLocation= document.querySelector('[name=location]')
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
+const locationQuery= document.querySelector('[name=location]')
 
 
 //FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
@@ -60,7 +52,14 @@ function search(jobQuery, locationQuery) {
   }
 }
 
-search('dev', 'us')
+search(jobQuery,locationQuery)
+
+
+
+
+
+
+
 
 
 
