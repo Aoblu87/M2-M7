@@ -5,7 +5,71 @@
 // const inputLocation=document.querySelector('#location')
 
 
-// CREO NUOVO ARRAY PER RENDERE LOWER CASE TUTTI GLI OGGETTI
+
+
+
+//deFINISCO COSTANTE PER NODO RICERCA lavORO
+//const inputJob= document.querySelector('[name=job]')
+
+
+//DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
+// let jobValue =inputJob.value
+
+// const InputLocation= document.querySelector('[name=location]')
+
+
+//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
+function search(jobQuery, locationQuery) {
+
+  let result = []
+
+  let count = 0
+
+  for (let i = 0; i < jobs.length; i++) {
+    const job = jobs[i];
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectTitle = job.title
+
+    // rendo la proprità della posizione lavorativa minuscola
+    objectTitle = (job.title).toLowerCase()
+
+    //rendo minuscolo anche il paramentro lavoro
+    jobQuery = jobQuery.toLowerCase()
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectLocation = job.location
+
+    // rendo la proprità della posizione geografica minuscola
+    objectLocation = (job.location).toLowerCase()
+
+    //rendo minuscolo parametro posizione geografica
+    locationQuery = locationQuery.toLowerCase()
+
+
+
+
+    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
+      count = count + 1
+      result.push(job)
+      console.log(result)
+      console.log(count)
+
+    }
+
+  }
+}
+
+search('dev', 'us')
+
+
+
+
+
+
+
+// NON MODIFICARE QUESTO ARRAY!
+
 const jobs = [
   { title: "Marketing Intern", location: "US, NY, New York" },
   {
@@ -92,68 +156,6 @@ const jobs = [
     location: "US, NY, Saint Bonaventure",
   },
 ]
-//TRASFORMARE L'ARRAY TUTTO IN MINUSCOLO
-// let lowerCase = []
-// lowerCase.push(jobs)
-let jobsLowerCase = []
-let titleLowerCase = []
-let locationLowerCase = []
-for (let i = 0; i < jobs.length; i++) {
-  const job = jobs[i]
-
-  titleLowerCase = job[i].title.toLowerCase()
-   
-  locationLowerCase = job[i].location.toLowerCase()
-  let arrayTitle=[]
-    arrayTitle.push(titleLowerCase)
-
-    let arrayLocation=[]
-    arrayLocation.push(locationLowerCase)
-    jobsLowerCase = jobsLowerCase.concat(arrayLocation, arrayTitle)
-    console.log(jobsLowerCase)
-
-
-
-}
-
-//deFINISCO COSTANTE PER NODO RICERCA lavORO
-//const inputJob= document.querySelector('[name=job]')
-
-
-//DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
-// let jobValue =inputJob.value
-
-// const InputLocation= document.querySelector('[name=location]')
-
-//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
-
-
-function search(jobQuery, locationQuery) {
-
-  let result = []
-  let count = 0
-  for (let i = 0; i < jobs.length; i++) {
-    const job = jobs[i];
-    let objectTitle = job.title
-    let objectLocation = job.location
-    //CERCO ALL'INTERNO DELLA STRINGA TITLE SE C'é UNA CORRISPONDENZA 
-    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
-      //if (jobQuery === objectTitle ||  locationQuery===objectLocation) {
-      count = count + 1
-      result.push(job)
-      console.log(result, count)
-    }
-    // else {
-    //   console.log ('Nessun risultato trovato')
-    // }
-  }
-}
-
-search('Marketing Intern', 'NY')
-
-
-
-
 /*
 PARTE 1: 
 Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
@@ -191,3 +193,5 @@ Dopo aver raccolto ed elaborato i dati, e’ il momento di mostrare i risultati 
     SUGGERIMENTO: ti servira’ un ciclo for!
 
 */
+
+
