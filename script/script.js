@@ -92,20 +92,29 @@ const jobs = [
     location: "US, NY, Saint Bonaventure",
   },
 ]
+//TRASFORMARE L'ARRAY TUTTO IN MINUSCOLO
+// let lowerCase = []
+// lowerCase.push(jobs)
+let jobsLowerCase = []
+let titleLowerCase = []
+let locationLowerCase = []
+for (let i = 0; i < jobs.length; i++) {
+  const job = jobs[i]
 
-let lowerCase=[]
-lowerCase.push(jobs)
-// let minuscolo
-// for (let i = 0; i < lowerCase.length; i++) {
-//   const element = lowerCase[i]
-  
-//   lowerCase[i] = element[i].title.toLowerCase()
-//   console.log(lowerCase)
+  titleLowerCase = job[i].title.toLowerCase()
+   
+  locationLowerCase = job[i].location.toLowerCase()
+  let arrayTitle=[]
+    arrayTitle.push(titleLowerCase)
 
-// }  
+    let arrayLocation=[]
+    arrayLocation.push(locationLowerCase)
+    jobsLowerCase = jobsLowerCase.concat(arrayLocation, arrayTitle)
+    console.log(jobsLowerCase)
 
-//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
 
+
+}
 
 //deFINISCO COSTANTE PER NODO RICERCA lavORO
 //const inputJob= document.querySelector('[name=job]')
@@ -116,20 +125,31 @@ lowerCase.push(jobs)
 
 // const InputLocation= document.querySelector('[name=location]')
 
-function search(){
+//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
 
-  let result=[]
-  let count=0
+
+function search(jobQuery, locationQuery) {
+
+  let result = []
+  let count = 0
   for (let i = 0; i < jobs.length; i++) {
-    const element = jobs[i];
-    
-  } {
-    if(inputJob.value===jobs[i].title)
-    console.log(jobs[i])
+    const job = jobs[i];
+    let objectTitle = job.title
+    let objectLocation = job.location
+    //CERCO ALL'INTERNO DELLA STRINGA TITLE SE C'é UNA CORRISPONDENZA 
+    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
+      //if (jobQuery === objectTitle ||  locationQuery===objectLocation) {
+      count = count + 1
+      result.push(job)
+      console.log(result, count)
+    }
+    // else {
+    //   console.log ('Nessun risultato trovato')
+    // }
   }
 }
 
-    search("English Teacher Abroad")
+search('Marketing Intern', 'NY')
 
 
 
@@ -156,7 +176,6 @@ REQUISITI:
   count: 0 <-- inserisci qui il numero totale delle inserzioni trovate
 }
 
-- da ogni inserzione trovata, elimina i campi "description", "requirements", "benefits" e "company_profile" per semplificare il risultato
 
 - la tua ricerca deve essere "case insensitive" (non deve essere influenzata da lettere maiuscole o minuscole nelle parole cercate). Questo e' possibile trasformando tutto in lettere minuscole con .toLowerCase()
 
