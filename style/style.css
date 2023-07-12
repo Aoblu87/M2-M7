@@ -1,0 +1,7 @@
+#show-result{
+    visibility: visible;
+}
+#no-result{
+    visibility: visible;
+    list-style-type: none;
+}

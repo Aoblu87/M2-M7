@@ -1,72 +1,3 @@
-//AGGIUNGERE WINDOW.LOAD
-//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
-const jobQuery= document.querySelector('[name=job]')
-
-
-//DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
-// let jobValue =inputJob.value
-
-//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
-const locationQuery= document.querySelector('[name=location]')
-
-
-//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
-function search(jobQuery, locationQuery) {
-
-  let result = []
-
-  let count = 0
-
-  for (let i = 0; i < jobs.length; i++) {
-    const job = jobs[i];
-
-    //assegno variabile per identificare la proprietà da confrontare
-    let objectTitle = job.title
-
-    // rendo la proprità della posizione lavorativa minuscola
-    objectTitle = (job.title).toLowerCase()
-
-    //rendo minuscolo anche il paramentro lavoro
-    jobQuery = jobQuery.toLowerCase()
-
-    //assegno variabile per identificare la proprietà da confrontare
-    let objectLocation = job.location
-
-    // rendo la proprità della posizione geografica minuscola
-    objectLocation = (job.location).toLowerCase()
-
-    //rendo minuscolo parametro posizione geografica
-    locationQuery = locationQuery.toLowerCase()
-
-
-
-
-    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
-      count = count + 1
-      result.push(job)
-      console.log(result)
-      console.log(count)
-
-    }
-
-  }
-}
-
-search(jobQuery,locationQuery)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // NON MODIFICARE QUESTO ARRAY!
 
 const jobs = [
@@ -155,6 +86,116 @@ const jobs = [
     location: "US, NY, Saint Bonaventure",
   },
 ]
+//---------------------------------------------------------------------------------------
+//AGGIUNGERE WINDOW.LOAD
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+const jobInput = document.querySelector('[name=job]')
+
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
+const locationInput = document.querySelector('[name=location]')
+
+
+//**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
+// let jobQuery 
+// jobQuery= inputJob.value
+
+
+//CREO NUOVO DIV PER I RISULTATI
+let newDiv = document.createElement('div')
+newDiv.id = 'show-result'
+
+//COLLOCO DIV SU HTML
+let body = document.querySelector('body')
+body.appendChild(newDiv)
+
+//CREO TITOLO 
+let newDivTitle = document.createElement('h3')
+newDiv.appendChild(newDivTitle)
+newDivTitle.innerText = 'Risultati della ricerca:'
+
+//CREO LISTA
+let newUl = document.createElement('ul')
+
+//COLLOCO LISTA SU HTML
+let divResult = document.querySelector('#show-result')
+divResult.appendChild(newUl)
+
+//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+let newLi = document.createElement('li')
+newLi.id = 'no-result'
+divResult.appendChild(newLi)
+
+newLi.innerText = 'Nessun risultato trovato'
+//-------------------------------------------------------------------------------------
+//FUNZIONE PER
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------
+//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
+function search(jobQuery, locationQuery) {
+
+  let result = []
+
+  let count = 0
+
+  for (let i = 0; i < jobs.length; i++) {
+    const job = jobs[i];
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectTitle = job.title
+
+    // rendo la proprità della posizione lavorativa minuscola
+    objectTitle = (job.title).toLowerCase()
+
+    //rendo minuscolo anche il paramentro lavoro
+    jobQuery = jobQuery.toLowerCase()
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectLocation = job.location
+
+    // rendo la proprità della posizione geografica minuscola
+    objectLocation = (job.location).toLowerCase()
+
+    //rendo minuscolo parametro posizione geografica
+    locationQuery = locationQuery.toLowerCase()
+
+
+
+
+    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
+      count = count + 1
+      result.push(job)
+      alert('Risultati', result)
+      console.log(count)
+
+    }
+
+  }
+}
+
+// search(jobInput.value,locationInput.value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 PARTE 1: 
 Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
