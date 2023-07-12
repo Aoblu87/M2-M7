@@ -87,45 +87,45 @@ const jobs = [
   },
 ]
 //---------------------------------------------------------------------------------------
-//AGGIUNGERE WINDOW.LOAD
-//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
-const jobInput = document.querySelector('[name=job]')
+// //AGGIUNGERE WINDOW.LOAD
+// //DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+// const jobInput = document.querySelector('[name=job]')
 
-//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
-const locationInput = document.querySelector('[name=location]')
-
-
-//**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
-// let jobQuery 
-// jobQuery= inputJob.value
+// //DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
+// const locationInput = document.querySelector('[name=location]')
 
 
-//CREO NUOVO DIV PER I RISULTATI
-let newDiv = document.createElement('div')
-newDiv.id = 'show-result'
+// //**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
+// // let jobQuery 
+// // jobQuery= inputJob.value
 
-//COLLOCO DIV SU HTML
-let body = document.querySelector('body')
-body.appendChild(newDiv)
 
-//CREO TITOLO 
-let newDivTitle = document.createElement('h3')
-newDiv.appendChild(newDivTitle)
-newDivTitle.innerText = 'Risultati della ricerca:'
+// //CREO NUOVO DIV PER I RISULTATI
+// let newDiv = document.createElement('div')
+// newDiv.id = 'show-result'
 
-//CREO LISTA
-let newUl = document.createElement('ul')
+// //COLLOCO DIV SU HTML
+// let body = document.querySelector('body')
+// body.appendChild(newDiv)
 
-//COLLOCO LISTA SU HTML
-let divResult = document.querySelector('#show-result')
-divResult.appendChild(newUl)
+// //CREO TITOLO 
+// let newDivTitle = document.createElement('h3')
+// newDiv.appendChild(newDivTitle)
+// newDivTitle.innerText = 'Risultati della ricerca:'
 
-//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
-let newLi = document.createElement('li')
-newLi.id = 'no-result'
-divResult.appendChild(newLi)
+// //CREO LISTA
+// let newUl = document.createElement('ul')
 
-newLi.innerText = 'Nessun risultato trovato'
+// //COLLOCO LISTA SU HTML
+// let divResult = document.querySelector('#show-result')
+// divResult.appendChild(newUl)
+
+// //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+// let newLi = document.createElement('li')
+// newLi.id = 'no-result'
+// divResult.appendChild(newLi)
+
+// newLi.innerText = 'Nessun risultato trovato'
 //-------------------------------------------------------------------------------------
 //FUNZIONE PER
 
@@ -172,8 +172,8 @@ function search(jobQuery, locationQuery) {
     if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
       count = count + 1
       result.push(job)
-      alert('Risultati', result)
-      console.log(count)
+      // alert('Risultati', result)
+      console.log(result,count)
 
     }
 
@@ -183,6 +183,7 @@ function search(jobQuery, locationQuery) {
 // search(jobInput.value,locationInput.value)
 
 
+search('dev','us')
 
 
 
