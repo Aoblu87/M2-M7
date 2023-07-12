@@ -173,11 +173,11 @@ function search(jobQuery, locationQuery) {
       count = count + 1
       result.push(job)
       // alert('Risultati', result)
-      console.log(result,count)
+      // console.log(result,count)
 
     }
 
-  }
+  }return result 
 }
 
 // search(jobInput.value,locationInput.value)
