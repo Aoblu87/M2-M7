@@ -86,55 +86,58 @@ const jobs = [
     location: "US, NY, Saint Bonaventure",
   },
 ]
+
+
 //---------------------------------------------------------------------------------------
-// //AGGIUNGERE WINDOW.LOAD
-// //DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
-// const jobInput = document.querySelector('[name=job]')
+//AGGIUNGERE WINDOW.LOAD
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+const jobInput = document.querySelector('[name=job]')
 
-// //DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
-// const locationInput = document.querySelector('[name=location]')
-
-
-// //**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
-// // let jobQuery 
-// // jobQuery= inputJob.value
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
+const locationInput = document.querySelector('[name=location]')
 
 
-// //CREO NUOVO DIV PER I RISULTATI
-// let newDiv = document.createElement('div')
-// newDiv.id = 'show-result'
-
-// //COLLOCO DIV SU HTML
-// let body = document.querySelector('body')
-// body.appendChild(newDiv)
-
-// //CREO TITOLO 
-// let newDivTitle = document.createElement('h3')
-// newDiv.appendChild(newDivTitle)
-// newDivTitle.innerText = 'Risultati della ricerca:'
-
-// //CREO LISTA
-// let newUl = document.createElement('ul')
-
-// //COLLOCO LISTA SU HTML
-// let divResult = document.querySelector('#show-result')
-// divResult.appendChild(newUl)
-
-// //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
-// let newLi = document.createElement('li')
-// newLi.id = 'no-result'
-// divResult.appendChild(newLi)
-
-// newLi.innerText = 'Nessun risultato trovato'
-//-------------------------------------------------------------------------------------
-//FUNZIONE PER
+//**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
+// let jobQuery 
+// jobQuery= inputJob.value
 
 
+//CREO NUOVO DIV PER I RISULTATI
+let newDiv = document.createElement('div')
+newDiv.id = 'show-result'
 
+//COLLOCO DIV SU HTML
+let body = document.querySelector('body')
+body.appendChild(newDiv)
+
+//CREO TITOLO 
+let newDivTitle = document.createElement('h3')
+newDiv.appendChild(newDivTitle)
+newDivTitle.innerText = 'Risultati della ricerca:'
+
+//CREO LISTA
+let newUl = document.createElement('ul')
+
+//COLLOCO LISTA SU HTML
+let divResult = document.querySelector('#show-result')
+divResult.appendChild(newUl)
+
+//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+let newLi = document.createElement('li')
+newLi.id = 'no-result'
+divResult.appendChild(newLi)
+
+newLi.innerText = 'Nessun risultato trovato'
+
+//---------------------
+//CREO HTML PER VISUALIZZARE IL COUNT
 
 
 
-
+let newH4 = document.createElement('h4')
+divResult.appendChild(newH4)
+newH4.id = 'result-number'
+// newH4.innerHTML= count[0]
 
 
 //---------------------------------------------------------------------------------------
@@ -172,18 +175,80 @@ function search(jobQuery, locationQuery) {
     if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
       count = count + 1
       result.push(job)
-      // alert('Risultati', result)
-      // console.log(result,count)
+
 
     }
 
-  }return result 
+  } 
+
+  
+  newH4.textContent = count + ' Risultati trovati'
+
+
+
+
+
+  let stringaResult = ''
+  for (const stampaRisultato of result) {
+    stringaResult += result[stampaRisultato] + ' '
+
+    let newLi = document.createElement('li')
+    newLi.classList.add = 'list'
+    divResult.appendChild(newLi)
+
+    newLi.textContent = stringaResult
+
+
+
+  }
+
+
+
+  // return result
+  // console.log(result,count)    //--------------------CHIEDERE QUI
+  //INVOCARE ULTERIORE FUNZIONE CHE VISUALIZZA DATI? 
+
 }
 
 // search(jobInput.value,locationInput.value)
 
 
-search('dev','us')
+// search('dev','us')
+
+//----------------------------------------------
+//FUNZIONE PER VISUALIZZARE IL DIV DEI RISULTATI
+
+
+function showDivResult(){
+  divResult.classList.toggle('#show-result')
+}
+
+
+
+
+
+//-------------------------------------------------------------------------------------
+//FUNZIONE PER VISUALIZZARE RISULTATI
+
+// function showResult(count) {
+//   let numeroRisultati = 0
+//   for (let i = 0; i < count.length; i++) {
+//     const contatore = count[i];
+//     numeroRisultati = contatore + 1
+
+//   }
+//   console.log(newH4.innerHTML = numeroRisultati)
+
+// }
+
+
+
+
+
+
+
+
+
 
 
 
