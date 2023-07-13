@@ -102,40 +102,6 @@ const locationInput = document.querySelector('[name=location]')
 // jobQuery= inputJob.value
 
 
-// //CREO NUOVO DIV PER I RISULTATI
-// let newDiv = document.createElement('div')
-// newDiv.id = 'show-result'
-// newDiv.classList.add('hidden')
-
-// //COLLOCO DIV SU HTML
-// let body = document.querySelector('body')
-// body.appendChild(newDiv)
-
-// //CREO TITOLO 
-// let newDivTitle = document.createElement('h3')
-// newDiv.appendChild(newDivTitle)
-// newDivTitle.innerText = 'Risultati della ricerca:'
-
-// //CREO LISTA
-// let newUl = document.createElement('ul')
-
-// //COLLOCO LISTA SU HTML
-// let divResult = document.querySelector('#show-result')
-// divResult.appendChild(newUl)
-
-// //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
-// let newText = document.createElement('h3')
-// newText.id = 'no-result'
-// divResult.appendChild(newText)
-
-// newText.innerText = 'Nessun risultato trovato'
-
-// //---------------------
-// //CREO HTML PER VISUALIZZARE IL COUNT
-// let newH4 = document.createElement('h4')
-// newUl.appendChild(newH4)
-// newH4.id = 'result-number'
-
 
 //---------------------------------------------------------------------------------------
 //FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
@@ -146,30 +112,11 @@ function search(jobQuery, locationQuery) {
 
   let count = 0
 
-  if(document.querySelector('#output')||(jobInput.value===''&&locationInput==='')){
+  if (document.querySelector('#output')) {
     document.querySelector('#output').remove()
   }
-
-//   //CREO NUOVO DIV PER I RISULTATI
-// let newDiv = document.createElement('div')
-// newDiv.id = 'output'
-// newDiv.classList.add('hidden')
-
-// //COLLOCO DIV SU HTML
-// let body = document.querySelector('body')
-// body.appendChild(newDiv)
-
-// //CREO TITOLO 
-// let newDivTitle = document.createElement('h3')
-// newDiv.appendChild(newDivTitle)
-// newDivTitle.innerText = 'Risultati della ricerca:'
-
-// //CREO LISTA
-// let newUl = document.createElement('ul')
-
-// //COLLOCO LISTA SU HTML
-// let divResult = document.querySelector('#output')
-// divResult.appendChild(newUl)
+  // }else if(jobInput.textContent==='' && locationInput.textContent==='' ){
+  // }
 
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i];
@@ -190,42 +137,43 @@ function search(jobQuery, locationQuery) {
       result.push(job)
     }
   }
-    //CREO NUOVO DIV PER I RISULTATI
-let newDiv = document.createElement('div')
-newDiv.id = 'output'
-newDiv.classList.add('hidden')
+  //CREO NUOVO DIV PER I RISULTATI
+  let newDiv = document.createElement('div')
+  newDiv.id = 'output'
+  newDiv.classList.add('hidden')
 
-//COLLOCO DIV SU HTML
-let body = document.querySelector('body')
-body.appendChild(newDiv)
+  //COLLOCO DIV SU HTML
+  let body = document.querySelector('body')
+  body.appendChild(newDiv)
 
-//CREO TITOLO 
-let newDivTitle = document.createElement('h3')
-newDiv.appendChild(newDivTitle)
-newDivTitle.innerText = 'Risultati della ricerca:'
+  //CREO TITOLO 
+  let newDivTitle = document.createElement('h3')
+  newDiv.appendChild(newDivTitle)
+  newDivTitle.innerText = 'Risultati della ricerca:'
 
-//CREO LISTA
-let newUl = document.createElement('ul')
+  //CREO LISTA
+  let newUl = document.createElement('ul')
 
-//COLLOCO LISTA SU HTML
-let divResult = document.querySelector('#output')
-divResult.appendChild(newUl)
-  
+  //COLLOCO LISTA SU HTML
+  let divResult = document.querySelector('#output')
+  divResult.appendChild(newUl)
 
-//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
-let newText = document.createElement('h3')
-newText.id = 'no-result'
-divResult.appendChild(newText)
 
-newText.innerText = 'Nessun risultato trovato'
+  //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+  let newText = document.createElement('h3')
+  newText.id = 'no-result'
+  divResult.appendChild(newText)
 
-//---------------------
-//CREO HTML PER VISUALIZZARE IL COUNT
-let newH4 = document.createElement('h4')
-newUl.appendChild(newH4)
-newH4.id = 'result-number'
+  newText.innerText = 'Nessun risultato trovato'
+
+  //---------------------
+  //CREO HTML PER VISUALIZZARE IL COUNT
+  let newH4 = document.createElement('h4')
+  newUl.appendChild(newH4)
+  newH4.id = 'result-number'
 
   newH4.textContent = ' Risultati trovati: ' + count
+
   for (let i = 0; i < result.length; i++) {
     const stampa = result[i];
 
@@ -241,27 +189,27 @@ newH4.id = 'result-number'
 
 // search('dev', 'us')
 
-//----------------------------------------------
-//FUNZIONE PER VISUALIZZARE IL DIV DEI RISULTATI
+// //----------------------------------------------
+// //FUNZIONE PER VISUALIZZARE IL DIV DEI RISULTATI
 
 
-function showDivResult() {
-  divResult.classList.toggle('hidden')
-}
+// function showDivResult() {
+//   divResult.classList.toggle('hidden')
+// }
 
 
 
 
 
-//-------------------------------------------------------------------------------------
-//FUNZIONE PER VISUALIZZARE RISULTATI
-function removePreviousResult(){
-  
-}
+// //-------------------------------------------------------------------------------------
+// //FUNZIONE PER VISUALIZZARE RISULTATI
+// function removePreviousResult() {
 
-let button= document.querySelector('button')
+// }
 
-button.addEventListener('click', removePreviousResult)
+// let button = document.querySelector('button')
+
+// button.addEventListener('click', removePreviousResult)
 
 
 
