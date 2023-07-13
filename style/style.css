@@ -2,6 +2,6 @@
     visibility: visible;
 }
 #no-result{
-    visibility: hidden;
+    visibility: visible;
     list-style-type: none;
 }
