@@ -140,30 +140,36 @@ const locationInput = document.querySelector('[name=location]')
 //---------------------------------------------------------------------------------------
 //FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
 function search(jobQuery, locationQuery) {
+
+
   let result = []
 
   let count = 0
 
-  //CREO NUOVO DIV PER I RISULTATI
-let newDiv = document.createElement('div')
-newDiv.id = 'output'
-newDiv.classList.add('hidden')
+  if(document.querySelector('#output')||(jobInput.value===''&&locationInput==='')){
+    document.querySelector('#output').remove()
+  }
 
-//COLLOCO DIV SU HTML
-let body = document.querySelector('body')
-body.appendChild(newDiv)
+//   //CREO NUOVO DIV PER I RISULTATI
+// let newDiv = document.createElement('div')
+// newDiv.id = 'output'
+// newDiv.classList.add('hidden')
 
-//CREO TITOLO 
-let newDivTitle = document.createElement('h3')
-newDiv.appendChild(newDivTitle)
-newDivTitle.innerText = 'Risultati della ricerca:'
+// //COLLOCO DIV SU HTML
+// let body = document.querySelector('body')
+// body.appendChild(newDiv)
 
-//CREO LISTA
-let newUl = document.createElement('ul')
+// //CREO TITOLO 
+// let newDivTitle = document.createElement('h3')
+// newDiv.appendChild(newDivTitle)
+// newDivTitle.innerText = 'Risultati della ricerca:'
 
-//COLLOCO LISTA SU HTML
-let divResult = document.querySelector('#output')
-divResult.appendChild(newUl)
+// //CREO LISTA
+// let newUl = document.createElement('ul')
+
+// //COLLOCO LISTA SU HTML
+// let divResult = document.querySelector('#output')
+// divResult.appendChild(newUl)
 
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i];
@@ -184,6 +190,26 @@ divResult.appendChild(newUl)
       result.push(job)
     }
   }
+    //CREO NUOVO DIV PER I RISULTATI
+let newDiv = document.createElement('div')
+newDiv.id = 'output'
+newDiv.classList.add('hidden')
+
+//COLLOCO DIV SU HTML
+let body = document.querySelector('body')
+body.appendChild(newDiv)
+
+//CREO TITOLO 
+let newDivTitle = document.createElement('h3')
+newDiv.appendChild(newDivTitle)
+newDivTitle.innerText = 'Risultati della ricerca:'
+
+//CREO LISTA
+let newUl = document.createElement('ul')
+
+//COLLOCO LISTA SU HTML
+let divResult = document.querySelector('#output')
+divResult.appendChild(newUl)
   
 
 //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
@@ -230,10 +256,7 @@ function showDivResult() {
 //-------------------------------------------------------------------------------------
 //FUNZIONE PER VISUALIZZARE RISULTATI
 function removePreviousResult(){
-  let check= document.querySelector('#output')
-  if(check){
-    check.remove()
-  }else search
+  
 }
 
 let button= document.querySelector('button')
