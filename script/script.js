@@ -89,8 +89,8 @@ const jobs = [
 
 
 //---------------------------------------------------------------------------------------
-//AGGIUNGERE WINDOW.LOAD
-//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+// //AGGIUNGERE WINDOW.LOAD
+// //DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
 const jobInput = document.querySelector('[name=job]')
 
 //DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
@@ -102,9 +102,52 @@ const locationInput = document.querySelector('[name=location]')
 // jobQuery= inputJob.value
 
 
-//CREO NUOVO DIV PER I RISULTATI
+// //CREO NUOVO DIV PER I RISULTATI
+// let newDiv = document.createElement('div')
+// newDiv.id = 'show-result'
+// newDiv.classList.add('hidden')
+
+// //COLLOCO DIV SU HTML
+// let body = document.querySelector('body')
+// body.appendChild(newDiv)
+
+// //CREO TITOLO 
+// let newDivTitle = document.createElement('h3')
+// newDiv.appendChild(newDivTitle)
+// newDivTitle.innerText = 'Risultati della ricerca:'
+
+// //CREO LISTA
+// let newUl = document.createElement('ul')
+
+// //COLLOCO LISTA SU HTML
+// let divResult = document.querySelector('#show-result')
+// divResult.appendChild(newUl)
+
+// //CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+// let newText = document.createElement('h3')
+// newText.id = 'no-result'
+// divResult.appendChild(newText)
+
+// newText.innerText = 'Nessun risultato trovato'
+
+// //---------------------
+// //CREO HTML PER VISUALIZZARE IL COUNT
+// let newH4 = document.createElement('h4')
+// newUl.appendChild(newH4)
+// newH4.id = 'result-number'
+
+
+//---------------------------------------------------------------------------------------
+//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
+function search(jobQuery, locationQuery) {
+  let result = []
+
+  let count = 0
+
+  //CREO NUOVO DIV PER I RISULTATI
 let newDiv = document.createElement('div')
-newDiv.id = 'show-result'
+newDiv.id = 'output'
+newDiv.classList.add('hidden')
 
 //COLLOCO DIV SU HTML
 let body = document.querySelector('body')
@@ -119,108 +162,65 @@ newDivTitle.innerText = 'Risultati della ricerca:'
 let newUl = document.createElement('ul')
 
 //COLLOCO LISTA SU HTML
-let divResult = document.querySelector('#show-result')
+let divResult = document.querySelector('#output')
 divResult.appendChild(newUl)
-
-//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
-let newLi = document.createElement('li')
-newLi.id = 'no-result'
-divResult.appendChild(newLi)
-
-newLi.innerText = 'Nessun risultato trovato'
-
-//---------------------
-//CREO HTML PER VISUALIZZARE IL COUNT
-
-
-
-let newH4 = document.createElement('h4')
-divResult.appendChild(newH4)
-newH4.id = 'result-number'
-// newH4.innerHTML= count[0]
-
-
-//---------------------------------------------------------------------------------------
-//FUNZIONE CHE CERCA TRA DUE PARAMETRI E RESTITUISCE RISULTATI
-function search(jobQuery, locationQuery) {
-
-  let result = []
-
-  let count = 0
 
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i];
 
     //assegno variabile per identificare la proprietà da confrontare
-    let objectTitle = job.title
-
-    // rendo la proprità della posizione lavorativa minuscola
-    objectTitle = (job.title).toLowerCase()
-
+    let objectTitle = (job.title).toLowerCase()
     //rendo minuscolo anche il paramentro lavoro
-    jobQuery = jobQuery.toLowerCase()
+    jobQuery.toLowerCase()
 
     //assegno variabile per identificare la proprietà da confrontare
-    let objectLocation = job.location
-
-    // rendo la proprità della posizione geografica minuscola
-    objectLocation = (job.location).toLowerCase()
-
+    let objectLocation = (job.location).toLowerCase()
     //rendo minuscolo parametro posizione geografica
-    locationQuery = locationQuery.toLowerCase()
-
-
+    locationQuery.toLowerCase()
 
 
     if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
       count = count + 1
       result.push(job)
-
-
     }
-
-  } 
-
+  }
   
-  newH4.textContent = count + ' Risultati trovati'
 
+//CREO TESTO DA VISUALIZARE SE NON FOSSE TROVATO ALCUN RISULTATO
+let newText = document.createElement('h3')
+newText.id = 'no-result'
+divResult.appendChild(newText)
 
+newText.innerText = 'Nessun risultato trovato'
 
+//---------------------
+//CREO HTML PER VISUALIZZARE IL COUNT
+let newH4 = document.createElement('h4')
+newUl.appendChild(newH4)
+newH4.id = 'result-number'
 
-
-  let stringaResult = ''
-  for (const stampaRisultato of result) {
-    stringaResult += result[stampaRisultato] + ' '
+  newH4.textContent = ' Risultati trovati: ' + count
+  for (let i = 0; i < result.length; i++) {
+    const stampa = result[i];
 
     let newLi = document.createElement('li')
     newLi.classList.add = 'list'
-    divResult.appendChild(newLi)
+    newUl.appendChild(newLi)
 
-    newLi.textContent = stringaResult
-
-
-
+    newLi.textContent = 'Posizione lavorativa: ' + stampa.title + '. Luogo: ' + stampa.location
   }
-
-
-
-  // return result
-  // console.log(result,count)    //--------------------CHIEDERE QUI
-  //INVOCARE ULTERIORE FUNZIONE CHE VISUALIZZA DATI? 
 
 }
 
-// search(jobInput.value,locationInput.value)
 
-
-// search('dev','us')
+// search('dev', 'us')
 
 //----------------------------------------------
 //FUNZIONE PER VISUALIZZARE IL DIV DEI RISULTATI
 
 
-function showDivResult(){
-  divResult.classList.toggle('#show-result')
+function showDivResult() {
+  divResult.classList.toggle('hidden')
 }
 
 
@@ -230,16 +230,7 @@ function showDivResult(){
 //-------------------------------------------------------------------------------------
 //FUNZIONE PER VISUALIZZARE RISULTATI
 
-// function showResult(count) {
-//   let numeroRisultati = 0
-//   for (let i = 0; i < count.length; i++) {
-//     const contatore = count[i];
-//     numeroRisultati = contatore + 1
 
-//   }
-//   console.log(newH4.innerHTML = numeroRisultati)
-
-// }
 
 
 
