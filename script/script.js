@@ -229,7 +229,16 @@ function showDivResult() {
 
 //-------------------------------------------------------------------------------------
 //FUNZIONE PER VISUALIZZARE RISULTATI
+function removePreviousResult(){
+  let check= document.querySelector('#output')
+  if(check){
+    check.remove()
+  }else search
+}
 
+let button= document.querySelector('button')
+
+button.addEventListener('click', removePreviousResult)
 
 
 
