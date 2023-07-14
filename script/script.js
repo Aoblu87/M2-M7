@@ -111,38 +111,38 @@ function search(jobQuery, locationQuery) {
   let result = []
 
   let count = 0
-  let output = document.querySelector('#output')
+  let output=document.querySelector('#output')
 
-  if (jobInput === '' && locationInput === '') {
+  if (output) {
     output.remove()
-  } else if (output) {
-    output.remove()
+  }
+ 
+
+  for (let i = 0; i < jobs.length; i++) {
+    const job = jobs[i];
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectTitle = (job.title).toLowerCase()
+    //rendo minuscolo anche il paramentro lavoro
+    jobQuery.toLowerCase()
+
+    //assegno variabile per identificare la proprietà da confrontare
+    let objectLocation = (job.location).toLowerCase()
+    //rendo minuscolo parametro posizione geografica
+    locationQuery.toLowerCase()
 
 
-    for (let i = 0; i < jobs.length; i++) {
-      const job = jobs[i];
-
-      //assegno variabile per identificare la proprietà da confrontare
-      let objectTitle = (job.title).toLowerCase()
-      //rendo minuscolo anche il paramentro lavoro
-      jobQuery.toLowerCase()
-
-      //assegno variabile per identificare la proprietà da confrontare
-      let objectLocation = (job.location).toLowerCase()
-      //rendo minuscolo parametro posizione geografica
-      locationQuery.toLowerCase()
-
-
-      if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
-        count = count + 1
-        result.push(job)
-      }
+    if (objectTitle.includes(jobQuery) && objectLocation.includes(locationQuery)) {
+      count = count + 1
+      result.push(job)
     }
   }
   //CREO NUOVO DIV PER I RISULTATI
   let newDiv = document.createElement('div')
   newDiv.id = 'output'
   newDiv.classList.add('hidden')
+
+  //COLLOCO DIV SU HTML
   let body = document.querySelector('body')
   body.appendChild(newDiv)
 
@@ -153,14 +153,19 @@ function search(jobQuery, locationQuery) {
 
   //CREO LISTA
   let newUl = document.createElement('ul')
+
+  //COLLOCO LISTA SU HTML
   let divResult = document.querySelector('#output')
   divResult.appendChild(newUl)
 
+
+
+
+  //---------------------
   //CREO HTML PER VISUALIZZARE IL COUNT
   let newH4 = document.createElement('h4')
   newUl.appendChild(newH4)
   newH4.id = 'result-number'
-
 
   newH4.textContent = ' Risultati trovati: ' + count
 
@@ -180,7 +185,15 @@ function search(jobQuery, locationQuery) {
 
 
 
+// //-------------------------------------------------------------------------------------
+// //FUNZIONE PER VISUALIZZARE RISULTATI
+// function removePreviousResult() {
 
+// }
+
+// let button = document.querySelector('button')
+
+// button.addEventListener('click', removePreviousResult)
 
 
 
