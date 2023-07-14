@@ -229,7 +229,6 @@ function search(jobQuery, locationQuery) {
 
 
 
-
 /*
 PARTE 1: 
 Oggi analizzeremo un problema molto comune: realizzare algoritmi di ricerca.
