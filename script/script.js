@@ -87,19 +87,13 @@ const jobs = [
   },
 ]
 
-
 //---------------------------------------------------------------------------------------
 // //AGGIUNGERE WINDOW.LOAD
-// //DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
-const jobInput = document.querySelector('[name=job]')
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+const jobInput = document.querySelector('#jobInput')
 
 //DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
-const locationInput = document.querySelector('[name=location]')
-
-
-//**CHIEDERE****DEFINISCO COSTANTE PER INDIVIDUARE IL VALORE DEL CAMPO RICERCA LAVORO
-// let jobQuery 
-// jobQuery= inputJob.value
+const locationInput = document.querySelector('#locationInput')
 
 
 
@@ -111,12 +105,15 @@ function search(jobQuery, locationQuery) {
   let result = []
 
   let count = 0
-  let output=document.querySelector('#output')
+
+  let output = document.querySelector('#output')
+
+
 
   if (output) {
     output.remove()
   }
- 
+
 
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i];
@@ -137,6 +134,9 @@ function search(jobQuery, locationQuery) {
       result.push(job)
     }
   }
+
+  //------------------------------------------------------------------------------
+
   //CREO NUOVO DIV PER I RISULTATI
   let newDiv = document.createElement('div')
   newDiv.id = 'output'
@@ -161,13 +161,14 @@ function search(jobQuery, locationQuery) {
 
 
 
-  //---------------------
+  //-----------------------------------------------------
   //CREO HTML PER VISUALIZZARE IL COUNT
   let newH4 = document.createElement('h4')
   newUl.appendChild(newH4)
   newH4.id = 'result-number'
 
   newH4.textContent = ' Risultati trovati: ' + count
+  //----------------------------------------------------
 
   for (let i = 0; i < result.length; i++) {
     const stampa = result[i];
@@ -178,22 +179,34 @@ function search(jobQuery, locationQuery) {
 
     newLi.textContent = 'Posizione lavorativa: ' + stampa.title + '. Luogo: ' + stampa.location
   }
-
+  return {
+    result,
+    count: result.length
+  }
 }
 
+// function emptyInput(jobQuery, locationQuery) {
 
+//   let output = document.querySelector('#output')
+//   let jobQuery = document.querySelector('#jobInput')
+//   let locationQuery = document.querySelector('locationInput')
+//   let button= document.querySelector('button')
+//   const data= search(jobQuery,locationQuery)
 
+//   // button.addEventListener('click', search)
+//   if (jobQuery.value === '' && locationQuery.value === '') {
+//     output.remove()
 
+//   }else { 
+//     output.remove()
 
-// //-------------------------------------------------------------------------------------
-// //FUNZIONE PER VISUALIZZARE RISULTATI
-// function removePreviousResult() {
+//     return data
 
+//   }
 // }
 
-// let button = document.querySelector('button')
 
-// button.addEventListener('click', removePreviousResult)
+
 
 
 
