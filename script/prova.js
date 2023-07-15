@@ -164,9 +164,8 @@ function showResult(jobQuery, locationQuery) {
 
   for (const showResult of data.result) {
     
-    if(jobInput.value==='' && locationInput === ''){
-      output.remove()
-
+    if(jobInput.value==='' && locationInput.value === ''){
+      
     }
 
     let newLi = document.createElement('li')
