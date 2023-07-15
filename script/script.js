@@ -90,10 +90,10 @@ const jobs = [
 //---------------------------------------------------------------------------------------
 // //AGGIUNGERE WINDOW.LOAD
 //DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
-const jobInput = document.querySelector('#jobInput')
+const jobQuery = document.querySelector('#jobInput')
 
 //DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
-const locationInput = document.querySelector('#locationInput')
+const locationQuery= document.querySelector('#locationInput')
 
 
 

@@ -88,25 +88,93 @@ const jobs = [
 ]
 
 
+//---------------------------------------------------------------------------------------
+// //AGGIUNGERE WINDOW.LOAD
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA lavORO
+const jobQuery = document.querySelector('#jobInput')
 
-function search(jobQuery, locationQuery){
+//DEFINISCO COSTANTE PER NODO INPUT RICERCA POSIZIONE GEOGRAFICA
+const locationQuery= document.querySelector('#locationInput')
 
-  let result=[]
-  let count=0
 
-  let jobLowerCase= job.title.toLowerCase()
-  let locationLowerCase= job.title.toLowerCase()
-  let jobQueryLowerCase=jobQuery.toLowerCase()
-  let locationQueryLowerCase= locationQuery.toLowerCase()
 
-  for(const job of jobs){
+function search(jobQuery, locationQuery) {
 
-    if(jobLowerCase.includes(jobQueryLowerCase) && locationLowerCase.includes(locationQueryLowerCase)){
-      
-      result.push(job)
-      count = count + 1
+  let result = []
+  let count = 0
+
+  let output = document.querySelector('#output')
+
+
+  if (output) {
+    output.remove()
+  } else if( jobInput.value === '' && locationInput.value ===''){
+    return result 
 
   }
+
+
+
+  const jobQueryLowerCase = jobQuery.toLowerCase()
+  const locationQueryLowerCase = locationQuery.toLowerCase()
+
+  for (const job of jobs) {
+
+    if (job.title.toLowerCase().includes(jobQueryLowerCase) && job.location.toLowerCase().includes(locationQueryLowerCase)) {
+
+      result.push(job)
+    } 
+  } return {
+    result,
+    count: result.length
   }
 }
- search('dev', 'us')
+
+
+//----------FUNZIONE PER CREARE HTML------------------
+function showResult(jobQuery, locationQuery) {
+
+  const data = search(jobQuery, locationQuery)
+  let output = document.querySelector('#output')
+
+
+  //CREO NUOVO DIV PER I RISULTATI
+  let newDiv = document.createElement('div')
+  newDiv.id = 'output'
+  let body = document.querySelector('body')
+  body.appendChild(newDiv)
+
+  //CREO TITOLO 
+  let newDivTitle = document.createElement('h3')
+  newDiv.appendChild(newDivTitle)
+  newDivTitle.innerText = 'Risultati della ricerca:'
+
+  //CREO LISTA
+  let newUl = document.createElement('ul')
+  let divResult = document.querySelector('#output')
+  divResult.appendChild(newUl)
+  //-----------------------------------------------------
+  //CREO HTML PER VISUALIZZARE IL COUNT
+  let newH4 = document.createElement('h4')
+  newUl.appendChild(newH4)
+  newH4.id = 'result-number'
+
+  newH4.textContent = ' Risultati trovati: ' + data.count
+  //----------------------------------------------------
+
+  for (const showResult of data.result) {
+    
+    if(jobInput.value==='' && locationInput === ''){
+      output.remove()
+
+    }
+
+    let newLi = document.createElement('li')
+    newLi.classList.add = 'list'
+    newUl.appendChild(newLi)
+
+    newLi.textContent = 'Posizione lavorativa: ' + showResult.title + '. Luogo: ' + showResult.location
+  } 
+}
+
+
